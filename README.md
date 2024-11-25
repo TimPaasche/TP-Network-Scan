@@ -2,7 +2,7 @@
 
 ## Installation
 
-1. install (ASP.NET Core Runtime 8.x)[https://dotnet.microsoft.com/en-us/download/dotnet/8.0]
+1. install [ASP.NET Core Runtime 8.x](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
 2. execute TP-Network-Scan.exe
 
 ## How to use program?
