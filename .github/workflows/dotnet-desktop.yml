@@ -27,11 +27,11 @@ jobs:
       run: dotnet build --configuration Release
 
     - name: Publish Standalone
-      run: dotnet publish -c Release -r win-x64 --self-contained true /p:PublishSingleFile=true
+      run: dotnet publish -c Release --self-contained true /p:PublishSingleFile=true
 
     - name: Create Release
       uses: ncipollo/release-action@v1
       with:
         tag: v1.0.0
         name: "Standalone Release"
-        artifacts: bin\Release\net8.0\win-x64\publish\*
+        artifacts: bin\Release\net8.0-windows\win-x64\publish\*
