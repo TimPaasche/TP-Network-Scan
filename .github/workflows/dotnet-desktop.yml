@@ -39,3 +39,11 @@ jobs:
       with:
         name: standalone-release
         path: bin\Release\net8.0\win-x64\publish\* # Adjust the path based on your framework and project structure
+
+      # Create GitHub release
+    - name: Create Release
+      uses: ncipollo/release-action@v1
+      with:
+        tag: ${{ github.sha }}
+        releaseName: Standalone Release
+        files: bin\Release\net8.0\win-x64\publish\*
