@@ -34,4 +34,4 @@ jobs:
       with:
         tag: v1.0.0
         name: "Standalone Release"
-        artifacts: bin\Release\net8.0-windows\win-x64\publish\*
+        artifacts: TP-Network-Scan\bin\Release\net8.0-windows\win-x64\publish\*
