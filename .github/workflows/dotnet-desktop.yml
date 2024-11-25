@@ -5,45 +5,39 @@ on:
     branches:
       - master
 
+permissions:
+  contents: write
+
 jobs:
   build:
-    name: Build .NET Application
     runs-on: windows-latest
-
     steps:
-    # Checkout the repository
     - name: Checkout Code
       uses: actions/checkout@v3
 
-    # Set up .NET environment
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: '8.x' # Replace with your target .NET version
+        dotnet-version: '7.x'
 
-    # Restore dependencies
     - name: Restore Dependencies
       run: dotnet restore
 
-    # Build the application
     - name: Build Application
       run: dotnet build --configuration Release
 
-    # Publish standalone application
     - name: Publish Standalone
       run: dotnet publish -c Release -r win-x64 --self-contained true /p:PublishSingleFile=true
 
-    # Archive the build
     - name: Archive Build
       uses: actions/upload-artifact@v3
       with:
         name: standalone-release
-        path: bin\Release\net8.0\win-x64\publish\* # Adjust the path based on your framework and project structure
+        path: bin\Release\net7.0\win-x64\publish\*
 
-      # Create GitHub release
     - name: Create Release
       uses: ncipollo/release-action@v1
       with:
-        tag: ${{ github.sha }}
-        releaseName: Standalone Release
-        files: bin\Release\net8.0\win-x64\publish\*
+        tag: v1.0.0
+        name: "Standalone Release"
+        artifacts: bin\Release\net7.0\win-x64\publish\*
